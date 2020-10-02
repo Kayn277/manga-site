@@ -1,6 +1,6 @@
 import {ApiModelProperty} from '@nestjs/swagger/dist/decorators/api-model-property.decorator';
 import {IsNumber, IsString} from 'class-validator';
-import {UserEntity} from '../model/user.entity';
+import {UserEntity} from './user.entity';
 
 export class UserDTO implements Readonly <UserDTO> {
   @ApiModelProperty({required: true})
