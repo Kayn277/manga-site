@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, ManyToMany} from 'typeorm';
 
 @Entity({ name: 'tags' })
 export class TagsEntity {
@@ -7,5 +7,6 @@ export class TagsEntity {
 
   @Column({ type: 'varchar', default: true, length: 50, nullable: false })
   tag_name: string;
+
 
 }
