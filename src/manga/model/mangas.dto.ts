@@ -2,6 +2,10 @@ import {ApiModelProperty} from '@nestjs/swagger/dist/decorators/api-model-proper
 import {IsNumber, IsString, IsArray, ValidateNested, ArrayMinSize} from 'class-validator';
 import { Type } from 'class-transformer';
 import {MangasEntity} from './mangas.entity';
+import { TagsEntity } from '../tags/model/tags.entity';
+import { GenresEntity } from '../genres/model/genres.entity';
+import { TypesEntity } from '../types/model/types.entity';
+import { AuthorsEntity } from '../authors/model/authors.entity';
 
 export class MangasDTO implements Readonly <MangasDTO> {
   @ApiModelProperty({required: true})
@@ -27,19 +31,19 @@ export class MangasDTO implements Readonly <MangasDTO> {
   @IsArray()
   @ArrayMinSize(1)
   @ValidateNested({each: true})
-  @Type(() => Number)
-  manga_tags: number[];
+  @Type(() => TagsEntity)
+  manga_tags: TagsEntity[];
 
   @ApiModelProperty({required: true})
   @IsArray()
   @ArrayMinSize(1)
   @ValidateNested({each: true})
-  @Type(() => Number)
-  manga_genres: number[];
+  @Type(() => GenresEntity)
+  manga_genres: GenresEntity[];
 
   @ApiModelProperty({required: true})
   @IsNumber()
-  manga_type: number;
+  manga_type: TypesEntity;
 
   @ApiModelProperty({required: true})
   @IsNumber()
@@ -50,7 +54,7 @@ export class MangasDTO implements Readonly <MangasDTO> {
   @ArrayMinSize(1)
   @ValidateNested({each: true})
   @Type(() => Number)
-  manga_authors: number[];
+  manga_authors: AuthorsEntity[];
 
   public static from(dto: Partial<MangasDTO>) {
     const manga = new MangasDTO();

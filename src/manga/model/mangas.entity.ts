@@ -19,18 +19,18 @@ export class MangasEntity {
   @Column ({type: 'text' })
   manga_description: string;
 
-  @ManyToMany (type => TagsEntity, manga_tags => manga_tags.tag_id)
-  manga_tags: number[];
+  @ManyToMany (type => TagsEntity)
+  manga_tags: TagsEntity[];
 
-  @ManyToMany (type => GenresEntity, manga_genres => manga_genres.genre_id)
-  manga_genres: number[];
+  @ManyToMany (type => GenresEntity)
+  manga_genres: GenresEntity[];
 
   @OneToMany (type => TypesEntity, manga_type => manga_type.type_id)
-  manga_type: number;
+  manga_type: TypesEntity;
 
   @Column ({type: 'integer'})
   manga_year: number;
 
-  @ManyToMany (type => AuthorsEntity, manga_authors => manga_authors.author_id)
-  manga_authors: number[];
+  @ManyToMany (type => AuthorsEntity)
+  manga_authors: AuthorsEntity[];
 }
